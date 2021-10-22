@@ -1,6 +1,6 @@
-import { Button } from "@/components/atoms/Button";
-import { TypographyH1 } from "@/components/atoms/TypographyH1";
-import FirstViewStyle from "@/styles/components/molecules/FirstView.module.scss";
+import { Button } from "@/components/ui/Button";
+import { TypographyH1 } from "@/components/ui/TypographyH1";
+import FirstViewStyle from "@/styles/pages/Index/FirstView.module.scss";
 
 export const FirstView = () => {
   return (

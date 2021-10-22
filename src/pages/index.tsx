@@ -1,5 +1,5 @@
 import { TheContainer } from "@/components/common/container";
-import { FirstView } from "@/components/molecules/FirstView";
+import { FirstView } from "@/components/pages/Index/FirstView";
 import Layout from "@/layouts/standard";
 
 const IndexPage = () => (

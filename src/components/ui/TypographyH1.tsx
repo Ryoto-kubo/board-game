@@ -1,4 +1,4 @@
-import TypographyH1Style from "@/styles/components/atoms/TypographyH1.module.scss";
+import TypographyH1Style from "@/styles/components/ui/TypographyH1.module.scss";
 
 type Props = {
   text: string;

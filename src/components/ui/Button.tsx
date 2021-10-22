@@ -1,4 +1,4 @@
-import ButtonStyle from "@/styles/components/atoms/Button.module.scss";
+import ButtonStyle from "@/styles/components/ui/Button.module.scss";
 
 type Props = {
   text: string;
