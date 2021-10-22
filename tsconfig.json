@@ -19,7 +19,10 @@
     "target": "esnext",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@variable": ["src/styles/variables.scss"],
+      "@layouts/*": ["src/styles/layouts/*"],
+      "@globalStyle": ["src/styles/global.scss"]
     },
     "typeRoots": ["src/@types", "./node_modules/@types"]
   },
