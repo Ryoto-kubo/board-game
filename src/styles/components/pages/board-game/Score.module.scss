@@ -1,0 +1,33 @@
+.root {
+  display: flex;
+}
+.childWrapper {
+  width: calc((100% - 900px) / 2);
+  &:first-child {
+    margin-right: 24px;
+  }
+}
+.ul {
+  list-style: none;
+  font-size: 14px;
+  .item {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+.player1 {
+  color: var(--c-indigo-primary);
+}
+.player2 {
+  color: var(--c-orange-primary);
+}
+.title {
+  font-weight: bold;
+}
+.moveLeft {
+  .num {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

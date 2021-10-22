@@ -1,6 +1,6 @@
 import { Link } from "@/components/ui/Link";
 import { TypographyH1 } from "@/components/ui/TypographyH1";
-import FirstViewStyle from "@/styles/pages/Index/FirstView.module.scss";
+import FirstViewStyle from "@/styles/components/pages/Index/FirstView.module.scss";
 export const FirstView = () => {
   return (
     <div className={FirstViewStyle.root}>
