@@ -1,11 +1,11 @@
-import { TypographyH1 } from "@/components/atoms/TypographyH1";
 import { TheContainer } from "@/components/common/container";
+import { FirstView } from "@/components/molecules/FirstView";
 import Layout from "@/layouts/standard";
 
 const IndexPage = () => (
   <Layout title="board-game | Next.js + TypeScript">
     <TheContainer>
-      <TypographyH1 text="Welcome Board Game!" className="root" />
+      <FirstView />
     </TheContainer>
   </Layout>
 );
