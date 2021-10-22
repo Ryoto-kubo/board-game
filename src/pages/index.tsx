@@ -1,12 +1,12 @@
-import { TheContainer } from "@/components/common/container";
+import { StandardContainer } from "@/components/common/containers/index";
 import { FirstView } from "@/components/pages/Index/FirstView";
 import Layout from "@/layouts/standard";
 
 const IndexPage = () => (
   <Layout title="board-game | Next.js + TypeScript">
-    <TheContainer>
+    <StandardContainer>
       <FirstView />
-    </TheContainer>
+    </StandardContainer>
   </Layout>
 );
 

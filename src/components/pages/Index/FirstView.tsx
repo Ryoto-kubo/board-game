@@ -1,13 +1,12 @@
-import { Button } from "@/components/ui/Button";
+import { Link } from "@/components/ui/Link";
 import { TypographyH1 } from "@/components/ui/TypographyH1";
 import FirstViewStyle from "@/styles/pages/Index/FirstView.module.scss";
-
 export const FirstView = () => {
   return (
     <div className={FirstViewStyle.root}>
       <TypographyH1 text="Welcome Board Game!" className="root" />
-      <div className={FirstViewStyle.buttonWrapper}>
-        <Button text="Start" className="root" />
+      <div className={FirstViewStyle.linkWrapper}>
+        <Link text="Start" href="/board-game" className="root" />
       </div>
     </div>
   );
