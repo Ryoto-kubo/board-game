@@ -2,7 +2,8 @@
   display: flex;
 }
 .childWrapper {
-  width: calc((100% - 900px) / 2);
+  max-width: 200px;
+  min-width: 200px;
   &:first-child {
     margin-right: 24px;
   }
