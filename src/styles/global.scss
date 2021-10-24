@@ -1,0 +1,24 @@
+:root {
+  --c-base-bg: #f5f5f5;
+  --c-neumorphism-right: #ffffff;
+  --c-neumorphism-dark: #d0d0d0;
+  --c-primary: #00acc1;
+  --c-red-600: #e53935;
+  --c-purple-600: #8e24aa;
+  --c-indigo-600: #3949ab;
+  --c-light-blue-600: #039be5;
+  --c-teal-600: #00897b;
+  --c-light-green-600: #7cb342;
+  // --c-roulette-first: #a43366;
+  // --c-roulette-second: #984f85;
+  // --c-roulette-third: #776cb9;
+  // --c-roulette-four: #4686cb;
+  // --c-roulette-five: #009bcc;
+  --c-indigo-primary: #5c6bc0;
+  --c-orange-primary: #ffa726;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
