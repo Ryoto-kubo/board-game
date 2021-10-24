@@ -1,12 +1,13 @@
 // import { Wheel } from "react-custom-roulette";
 import BaseRouletteStyle from "@/styles/components/ui/BaseRoulette.module.scss";
+// import Anime from "react-anime";
+import dynamic from "next/dynamic";
 import React, { useState } from "react";
-import Anime from "react-anime";
 
+const Anime = dynamic(() => import("react-anime"), {
+  ssr: false,
+});
 const RouletteAnimationComponent = (isRoop: boolean, rotate: number) => {
-  console.log(rotate);
-  console.log(isRoop);
-
   return (
     <Anime
       easing="easeInOutCirc"
