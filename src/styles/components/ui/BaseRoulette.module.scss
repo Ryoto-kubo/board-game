@@ -16,6 +16,15 @@
     inset -5px -5px 10px var(--c-neumorphism-right);
 }
 
+.rouletteTable {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: transparent;
+  // box-shadow: inset 5px 5px 10px var(--c-neumorphism-dark),
+  //   inset -5px -5px 10px var(--c-neumorphism-right);
+}
+
 .centerHr {
   position: absolute;
   top: 50%;
@@ -66,6 +75,19 @@
   z-index: 1;
 }
 
+.pin {
+  width: 13px;
+  height: 150px;
+  background: #d32f2f;
+  border-radius: 50px;
+  position: absolute;
+  top: -80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 4%;
+  box-shadow: 3px 3px 10px var(--c-neumorphism-dark);
+}
+
 .centerPin {
   position: absolute;
   top: 50%;
@@ -76,8 +98,8 @@
   background: var(--c-base-bg);
   border-radius: 50%;
   background: #f5f5f5;
-  box-shadow: 5px 5px 10px var(--c-neumorphism-dark),
-    -5px -5px 10px var(--c-neumorphism-right);
+  box-shadow: 1px 1px 0px var(--c-neumorphism-dark),
+    -1px -1px 0px var(--c-neumorphism-right);
 }
 
 .num {
