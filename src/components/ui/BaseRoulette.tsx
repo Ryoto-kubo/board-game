@@ -1,13 +1,21 @@
-// import { Wheel } from "react-custom-roulette";
 import BaseRouletteStyle from "@/styles/components/ui/BaseRoulette.module.scss";
-// import Anime from "react-anime";
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
-
+import React from "react";
 const Anime = dynamic(() => import("react-anime"), {
   ssr: false,
 });
-const RouletteAnimationComponent = (isRoop: boolean, rotate: number) => {
+
+type Props = {
+  isRoop: boolean;
+  rotate: number;
+  hideAfter5Sec: () => void;
+};
+
+const RouletteAnimationComponent = (
+  isRoop: boolean,
+  rotate: number,
+  hideAfter5Sec: () => void
+) => {
   return (
     <Anime
       easing="easeInOutCirc"
@@ -15,6 +23,7 @@ const RouletteAnimationComponent = (isRoop: boolean, rotate: number) => {
       rotate={rotate}
       loop={false}
       autoplay={isRoop}
+      complete={hideAfter5Sec}
     >
       <div id="js-roulette-table" className={BaseRouletteStyle.rouletteTable}>
         <div className={BaseRouletteStyle.centerHr}></div>
@@ -42,46 +51,16 @@ const RouletteAnimationComponent = (isRoop: boolean, rotate: number) => {
     </Anime>
   );
 };
-export const BaseRoulette = () => {
-  const [isRoop, setIsRoop] = useState(false);
-  const [rotate, setRotate] = useState(0);
 
-  // useEffect(() => {
-  //   const pinNode = document.getElementById("js-roulette-table");
-  //   if (pinNode === null) return;
-  //   const sec = 4;
-  //   let deg = 0;
-
-  //   console.log(Math.pow(0.5, 2) * ((deg + 1) * 0.5 - deg));
-
-  //   setInterval(() => {
-  //     deg++;
-  //     // console.log(Math.pow(deg, 2) + deg);
-  //     deg = Math.pow(1, 2) * ((deg + 1) * 1 - deg) + deg;
-  //     pinNode.style.transform = `rotate(${deg}deg)`;
-  //   }, 10);
-  // }, []);
-  const genRandomRotate = () => {
-    const MIN = 3600;
-    const MAX = 7200;
-    return Math.floor(Math.random() * (MAX - MIN) + MIN);
-  };
-  const start = () => {
-    setIsRoop(true);
-    setRotate(genRandomRotate() + rotate);
-  };
-  const init = () => {
-    setIsRoop(false);
-  };
-
+export const BaseRoulette = ({ isRoop, rotate, hideAfter5Sec }: Props) => {
   return (
-    <div className={BaseRouletteStyle.root}>
-      <div className={BaseRouletteStyle.centerPinWrapper}>
-        <div className={BaseRouletteStyle.centerPin}></div>
+    <>
+      <div className={BaseRouletteStyle.root}>
+        <div className={BaseRouletteStyle.centerPinWrapper}>
+          <div className={BaseRouletteStyle.centerPin}></div>
+        </div>
+        {RouletteAnimationComponent(isRoop, rotate, hideAfter5Sec)}
       </div>
-      {RouletteAnimationComponent(isRoop, rotate)}
-      <button onClick={start}>roop</button>
-      <button onClick={init}>init</button>
-    </div>
+    </>
   );
 };

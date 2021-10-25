@@ -2,9 +2,23 @@ import ButtonStyle from "@/styles/components/ui/Button.module.scss";
 
 type Props = {
   text: string;
-  className: "root";
+  mainClassName: "root";
+  fontClassName: "fontMiddle";
+  onClick: () => void;
 };
 
-export const Button = ({ text, className }: Props) => {
-  return <button className={ButtonStyle[className]}>{text}</button>;
+export const Button = ({
+  text,
+  mainClassName,
+  fontClassName,
+  onClick,
+}: Props) => {
+  return (
+    <button
+      className={`${ButtonStyle[mainClassName]} ${ButtonStyle[fontClassName]}`}
+      onClick={onClick}
+    >
+      {text}
+    </button>
+  );
 };
