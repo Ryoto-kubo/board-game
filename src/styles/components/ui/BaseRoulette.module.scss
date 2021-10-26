@@ -1,15 +1,23 @@
 .root {
   position: relative;
-  // width: 80vw;
-  // max-width: 445px;
-  // height: 80vw;
-  // max-height: 445px;
-  // object-fit: contain;
-  // flex-shrink: 0;
-  // z-index: 5;
-  // pointer-events: none;
-  width: 400px;
-  height: 400px;
+  width: 270px;
+  height: 270px;
+}
+
+.outer {
+  border-radius: 50%;
+  background: var(--c-base-bg);
+  box-shadow: 5px 5px 10px var(--c-neumorphism-dark),
+    -5px -5px 10px var(--c-neumorphism-right);
+}
+
+.inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background: var(--c-base-bg);
   box-shadow: inset 5px 5px 10px var(--c-neumorphism-dark),
@@ -17,12 +25,10 @@
 }
 
 .rouletteTable {
-  width: 400px;
-  height: 400px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background: transparent;
-  // box-shadow: inset 5px 5px 10px var(--c-neumorphism-dark),
-  //   inset -5px -5px 10px var(--c-neumorphism-right);
 }
 
 .centerHr {
@@ -31,7 +37,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 5px;
-  height: 350px;
+  height: 200px;
   border-radius: 50px;
   background: var(--c-base-bg);
   box-shadow: inset 1px 1px 0px var(--c-neumorphism-dark),
@@ -44,7 +50,7 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(60deg);
   width: 5px;
-  height: 350px;
+  height: 200px;
   border-radius: 50px;
   background: var(--c-base-bg);
   box-shadow: inset 1px 1px 0px var(--c-neumorphism-dark),
@@ -57,7 +63,7 @@
   left: 50%;
   transform: translate(-50%, -50%) rotate(-60deg);
   width: 5px;
-  height: 350px;
+  height: 200px;
   border-radius: 50px;
   background: var(--c-base-bg);
   box-shadow: inset 1px 1px 0px var(--c-neumorphism-dark),
@@ -66,8 +72,9 @@
 
 .centerPinWrapper {
   background: var(--c-base-bg);
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -75,26 +82,13 @@
   z-index: 1;
 }
 
-.pin {
-  width: 13px;
-  height: 150px;
-  background: #d32f2f;
-  border-radius: 50px;
-  position: absolute;
-  top: -80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transform-origin: 50% 4%;
-  box-shadow: 3px 3px 10px var(--c-neumorphism-dark);
-}
-
 .centerPin {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   background: var(--c-base-bg);
   border-radius: 50%;
   background: #f5f5f5;
@@ -103,102 +97,84 @@
 }
 
 .num {
-  font-size: 48px;
+  font-size: 35px;
   font-weight: bold;
 }
 
 .first {
   color: var(--c-red-600);
   position: absolute;
-  top: calc(400px / 3);
-  left: 244px;
+  top: calc(250px / 3);
+  left: calc((250px / 3) + 66px);
   transform: translate(0%, -100%);
 }
 
 .second {
   color: var(--c-purple-600);
   position: absolute;
-  top: calc(400px / 3);
-  left: 300px;
+  top: calc((250px / 3) - 10px);
+  left: calc((250px / 3) + 104px);
   transform: translate(0%, 75%);
 }
 
 .third {
   color: var(--c-indigo-600);
   position: absolute;
-  top: calc(400px / 3);
-  left: 244px;
+  top: calc((250px / 3) - 15px);
+  left: calc((250px / 3) + 66px);
   transform: translate(0%, 250%);
 }
 
 .four {
   color: var(--c-light-blue-600);
   position: absolute;
-  top: calc(400px / 3);
-  left: 124px;
+  top: calc((250px / 3) - 15px);
+  left: calc((250px / 3) - 10px);
   transform: translate(0%, 250%);
 }
 
 .five {
   color: var(--c-teal-600);
   position: absolute;
-  top: calc(400px / 3);
-  right: 300px;
+  top: calc((250px / 3) - 10px);
+  left: calc((250px / 3) - 43px);
   transform: translate(0%, 75%);
 }
 
 .six {
   color: var(--c-light-green-600);
   position: absolute;
-  top: calc(400px / 3);
-  left: 124px;
+  top: calc(250px / 3);
+  left: calc((250px / 3) - 10px);
   transform: translate(0%, -100%);
 }
 
-// .container {
-// }
+.show {
+  animation-name: showRoulette;
+  animation-duration: 1s;
+  animation-timing-function: easeInOutBack;
+  animation-fill-mode: forwards;
+}
+@keyframes showRoulette {
+  0% {
+    transform: translateX(500px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-524px) rotate(720deg);
+  }
+}
 
-// .container {
-//   position: absolute;
-//   width: 100%;
-//   left: 0px;
-//   right: 0px;
-//   top: 0px;
-//   bottom: 0px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   transform: rotate(45deg);
-
-//   &.started-spinning {
-//     animation: spin 5s cubic-bezier(0.71, -0.29, 0.96, 0.9) 0s 1 normal forwards
-//         running,
-//       continueSpin 0.75s linear(400 / 1000) s 1 normal forwards running,
-//       stopSpin 5s cubic-bezier(0, 0, 0.35, 1.02) 5s 1 normal forwards running;
-//   }
-
-//   @keyframes spin {
-//     from {
-//       transform: rotate(45deg);
-//     }
-//     to {
-//       transform: rotate((45 + 360) deg);
-//     }
-//   }
-//   @keyframes continueSpin {
-//     from {
-//       transform: rotate(45deg);
-//     }
-//     to {
-//       transform: rotate((45 + 360) deg);
-//     }
-//   }
-//   @keyframes stopSpin {
-//     from {
-//       transform: rotate(45deg);
-//     }
-//     to {
-//       transform: rotate(45deg);
-//     }
-//   }
-// }
+.hide {
+  animation-name: end;
+  animation-duration: 1s;
+  animation-timing-function: easeOutBack;
+  animation-fill-mode: forwards;
+}
+@keyframes end {
+  0% {
+    transform: translateX(-524px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(500px) rotate(720deg);
+  }
+}

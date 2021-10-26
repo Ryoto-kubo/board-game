@@ -1,26 +1,15 @@
 import { BaseRoulette } from "@/components/ui/BaseRoulette";
-import { Button } from "@/components/ui/Button";
+// import { Modal } from "@/components/ui/Modal";
 import { useRoulette } from "@/customHooks/useRoulette";
 import RouletteStyle from "@/styles/components/pages/board-game/Roulette.module.scss";
 
 export const Roulette = () => {
-  const { isRoop, rotate, start, hideAfter5Sec } = useRoulette();
+  const { start } = useRoulette();
+
   return (
     <div className={RouletteStyle.root}>
-      {isRoop && (
-        <BaseRoulette
-          isRoop={isRoop}
-          rotate={rotate}
-          hideAfter5Sec={hideAfter5Sec}
-        />
-      )}
-      <div className={RouletteStyle.buttonWrapper}>
-        <Button
-          text="ルーレットを回す"
-          mainClassName="root"
-          fontClassName="fontMiddle"
-          onClick={start}
-        />
+      <div className={RouletteStyle.rouletteWrapper}>
+        <BaseRoulette start={start} />
       </div>
     </div>
   );
