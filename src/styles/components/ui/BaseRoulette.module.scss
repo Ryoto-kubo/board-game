@@ -1,4 +1,14 @@
-.root {
+.pin {
+  width: 20px;
+  height: 15px;
+  background: var(--c-red-600);
+  clip-path: polygon(100% 0, 0 0, 50% 100%);
+  position: absolute;
+  top: -25px;
+  right: 126px;
+}
+
+.rouletteWrapper {
   position: relative;
   width: 270px;
   height: 270px;

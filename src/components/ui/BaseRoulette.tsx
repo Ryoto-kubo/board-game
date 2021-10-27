@@ -1,5 +1,5 @@
 import BaseRouletteStyle from "@/styles/components/ui/BaseRoulette.module.scss";
-import { faHandPointUp } from "@fortawesome/free-regular-svg-icons";
+import { faPlayCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
@@ -40,15 +40,20 @@ const RouletteAnimationComponent = () => {
 
 export const BaseRoulette = ({ start }: Props) => {
   return (
-    <div className={`${BaseRouletteStyle.root} ${BaseRouletteStyle.outer}`}>
-      <div className={BaseRouletteStyle.inner}>
-        <div className={BaseRouletteStyle.centerPinWrapper}>
-          <button className={BaseRouletteStyle.centerPin} onClick={start}>
-            <FontAwesomeIcon icon={faHandPointUp} color="#202124" size="lg" />
-          </button>
+    <>
+      <div className={BaseRouletteStyle.pin}></div>
+      <div
+        className={`${BaseRouletteStyle.rouletteWrapper} ${BaseRouletteStyle.outer}`}
+      >
+        <div className={BaseRouletteStyle.inner}>
+          <div className={BaseRouletteStyle.centerPinWrapper}>
+            <button className={BaseRouletteStyle.centerPin} onClick={start}>
+              <FontAwesomeIcon icon={faPlayCircle} color="#202124" size="lg" />
+            </button>
+          </div>
+          {RouletteAnimationComponent()}
         </div>
-        {RouletteAnimationComponent()}
       </div>
-    </div>
+    </>
   );
 };
