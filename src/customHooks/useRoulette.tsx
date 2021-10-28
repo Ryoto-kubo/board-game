@@ -1,6 +1,16 @@
-import { useState } from "react";
+import {
+  PlayerOrderType,
+  PlayerStateType,
+  TileListType,
+} from "@/types/pages/board-game";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export const useRoulette = () => {
+export const useRoulette = (
+  playerOrder: PlayerOrderType,
+  playerState: PlayerStateType,
+  setPlayerState: Dispatch<SetStateAction<PlayerStateType>>,
+  tileList: TileListType
+) => {
   const [isRoopStart, setIsRoopStart] = useState(false);
   const [rotate, setRotate] = useState(0);
 
@@ -60,6 +70,8 @@ export const useRoulette = () => {
       return 5;
     } else if (0 <= rotateDeg && rotateDeg <= 60) {
       return 6;
+    } else {
+      return 1;
     }
   };
 
@@ -74,6 +86,44 @@ export const useRoulette = () => {
     return getStepByRotateDeg(rotateDeg);
   };
 
+  const movePlayer = (step: number, playerOrder: "player1" | "player2") => {
+    const playerElement = getTargetElement(playerOrder);
+    if (playerElement === null) return;
+    const currentPlayer = playerState[playerOrder];
+    const shourdStepsForward = currentPlayer.stepsForward;
+    let prevPositionX = currentPlayer.positionX;
+    let prevPositionY = currentPlayer.positionY;
+    for (let i = shourdStepsForward; i <= shourdStepsForward + step; i++) {
+      const targetTile = tileList[i];
+      const nextPositionX = targetTile.positionX;
+      const nextPositionY = targetTile.positionY;
+      playerElement.animate(
+        [
+          {
+            transform: `translate(${prevPositionX}px ,${prevPositionY}px)　rotateY(0deg) `,
+          },
+          {
+            transform: `translate(${nextPositionX}px ,${nextPositionY}px) rotateY(720deg) `,
+          },
+        ],
+        {
+          duration: 500,
+          fill: "forwards",
+        }
+      );
+      prevPositionX = nextPositionX;
+      prevPositionY = nextPositionY;
+    }
+    setPlayerState({
+      ...playerState,
+      [playerOrder]: {
+        stepsForward: currentPlayer.stepsForward + step,
+        positionX: prevPositionX,
+        positionY: prevPositionY,
+      },
+    });
+  };
+
   const start = () => {
     if (isRoopStart) return;
     const rouletteTable = getTargetElement("js-roulette-table");
@@ -85,7 +135,7 @@ export const useRoulette = () => {
     animation.play();
     animation.finished.then(() => {
       const step = convertRotateToSteps(sumRotate);
-      console.log(step);
+      movePlayer(step, playerOrder);
       setIsRoopStart(false);
     });
     setIsRoopStart(true);

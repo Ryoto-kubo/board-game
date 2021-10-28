@@ -1,138 +1,30 @@
-export const userMapRoute = () => {
-  type TileListType = {
-    label: string;
-    nextTile: "top" | "bottom" | "right" | "";
-    positionY: number;
-    positionX: number;
-  }[];
+import { TileListType } from "@/types/pages/board-game";
+import { useEffect, useState } from "react";
+let currentTilePositionY = 0;
+let currentTilePositionX = 0;
 
-  let currentTilePositionY = 0;
-  let currentTilePositionX = 0;
+const BASE_TILE_SIZE = 110;
+const BASE_MARGIN_SIZE = 8;
 
-  const BASE_TILE_SIZE = 110;
-  const BASE_MARGIN_SIZE = 8;
-  const tileList: TileListType = [
-    {
-      label: "start0",
-      nextTile: "bottom",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start1",
-      nextTile: "bottom",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start2",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start3",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "top",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start5",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start2",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start3",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "bottom",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "bottom",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "bottom",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "top",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "top",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "top",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "start4",
-      nextTile: "right",
-      positionY: 110,
-      positionX: 0,
-    },
-    {
-      label: "Goal",
-      nextTile: "",
-      positionY: 110,
-      positionX: 0,
-    },
-  ];
+export const userMapRoute = (list: TileListType) => {
+  const [tileList, setTileList] = useState(list);
+
+  const calcPositionX = (nextTile: string, currentTilePositionX: number) => {
+    let positionX;
+    let updateCurrentTilePositionX;
+    switch (nextTile) {
+      case "bottom":
+      case "top":
+        positionX = currentTilePositionX;
+        updateCurrentTilePositionX = currentTilePositionX;
+        break;
+      default:
+        positionX = currentTilePositionX;
+        updateCurrentTilePositionX =
+          currentTilePositionX + BASE_TILE_SIZE + BASE_MARGIN_SIZE;
+    }
+    return { positionX, updateCurrentTilePositionX };
+  };
 
   const calcPositionY = (nextTile: string, currentTilePositionY: number) => {
     let positionY;
@@ -158,25 +50,8 @@ export const userMapRoute = () => {
     };
   };
 
-  const calcPositionX = (nextTile: string, currentTilePositionX: number) => {
-    let positionX;
-    let updateCurrentTilePositionX;
-    switch (nextTile) {
-      case "bottom":
-      case "top":
-        positionX = currentTilePositionX;
-        updateCurrentTilePositionX = currentTilePositionX;
-        break;
-      default:
-        positionX = currentTilePositionX;
-        updateCurrentTilePositionX =
-          currentTilePositionX + BASE_TILE_SIZE + BASE_MARGIN_SIZE;
-    }
-    return { positionX, updateCurrentTilePositionX };
-  };
-
   const mappingPositionForEach = () => {
-    tileList.forEach((item) => {
+    tileList.forEach((item, index) => {
       const { positionY, updateCurrentTilePositionY } = calcPositionY(
         item.nextTile,
         currentTilePositionY
@@ -185,13 +60,18 @@ export const userMapRoute = () => {
         item.nextTile,
         currentTilePositionX
       );
-      item.positionY = positionY;
-      item.positionX = positionX;
+      const newTileList = tileList.slice();
+      newTileList[index].positionY = positionY;
+      newTileList[index].positionX = positionX;
+      setTileList(newTileList);
       currentTilePositionY = updateCurrentTilePositionY;
       currentTilePositionX = updateCurrentTilePositionX;
     });
-    return tileList;
   };
 
-  return { mappingPositionForEach };
+  useEffect(() => {
+    mappingPositionForEach();
+  }, []);
+
+  return tileList;
 };

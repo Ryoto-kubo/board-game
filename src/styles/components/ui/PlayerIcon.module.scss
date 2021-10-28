@@ -3,7 +3,6 @@
   height: 44px;
   border-radius: 50px;
   z-index: 1;
-  transform: skew(-10deg);
   &:after {
     content: "";
     display: block;
@@ -31,13 +30,13 @@
 .player1 {
   background: var(--c-indigo-primary);
   position: absolute;
-  top: -15px;
-  left: 13px;
+  top: -20px;
+  left: 6px;
 }
 
 .player2 {
   background: var(--c-orange-primary);
   position: absolute;
-  top: -15px;
-  left: 65px;
+  top: -20px;
+  left: 60px;
 }

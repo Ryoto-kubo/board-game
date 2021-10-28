@@ -1,13 +1,14 @@
 import PlayerIconStyle from "@/styles/components/ui/PlayerIcon.module.scss";
 
 type Props = {
-  playerClassName: "player1" | "player2";
+  type: "player1" | "player2";
 };
 
-export const PlayerIcon = ({ playerClassName }: Props) => {
+export const PlayerIcon = ({ type }: Props) => {
   return (
     <div
-      className={`${PlayerIconStyle.outer} ${PlayerIconStyle[playerClassName]}`}
+      id={type}
+      className={`${PlayerIconStyle.outer} ${PlayerIconStyle[type]}`}
     >
       <div className={PlayerIconStyle.inner}></div>
     </div>
