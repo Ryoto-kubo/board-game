@@ -1,0 +1,27 @@
+.tile {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  padding: 8px;
+  border-radius: 20px;
+  background: var(--c-base-bg);
+  box-shadow: 5px 5px 10px var(--c-neumorphism-dark),
+    -5px -5px 10px var(--c-neumorphism-right);
+}
+
+.bottom {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.right {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.labelWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

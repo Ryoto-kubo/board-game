@@ -1,0 +1,42 @@
+.outer {
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  z-index: 1;
+  &:after {
+    content: "";
+    display: block;
+    width: 44px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--c-blue-gray-primary);
+    position: absolute;
+    top: 53px;
+    filter: blur(1px);
+  }
+}
+
+.inner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50px;
+  background: var(--c-base-bg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.player1 {
+  background: var(--c-indigo-primary);
+  position: absolute;
+  top: -20px;
+  left: 6px;
+}
+
+.player2 {
+  background: var(--c-orange-primary);
+  position: absolute;
+  top: -20px;
+  left: 60px;
+}
