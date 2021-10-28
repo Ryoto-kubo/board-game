@@ -135,44 +135,44 @@ export const userMapRoute = () => {
   ];
 
   const calcPositionY = (nextTile: string, currentTilePositionY: number) => {
-    if (nextTile === "right") {
-      return {
-        positionY: currentTilePositionY,
-        updateCurrentTilePositionY: currentTilePositionY,
-      };
-    } else if (nextTile === "top") {
-      return {
-        positionY: currentTilePositionY,
-        updateCurrentTilePositionY:
-          currentTilePositionY - BASE_TILE_SIZE - BASE_MARGIN_SIZE,
-      };
-    } else {
-      return {
-        positionY: currentTilePositionY,
-        updateCurrentTilePositionY:
-          currentTilePositionY + BASE_TILE_SIZE + BASE_MARGIN_SIZE,
-      };
+    let positionY;
+    let updateCurrentTilePositionY;
+    switch (nextTile) {
+      case "right":
+        positionY = currentTilePositionY;
+        updateCurrentTilePositionY = currentTilePositionY;
+        break;
+      case "top":
+        positionY = currentTilePositionY;
+        updateCurrentTilePositionY =
+          currentTilePositionY - BASE_TILE_SIZE - BASE_MARGIN_SIZE;
+        break;
+      default:
+        positionY = currentTilePositionY;
+        updateCurrentTilePositionY =
+          currentTilePositionY + BASE_TILE_SIZE + BASE_MARGIN_SIZE;
     }
+    return {
+      positionY,
+      updateCurrentTilePositionY,
+    };
   };
 
   const calcPositionX = (nextTile: string, currentTilePositionX: number) => {
-    if (nextTile === "bottom") {
-      return {
-        positionX: currentTilePositionX,
-        updateCurrentTilePositionX: currentTilePositionX,
-      };
-    } else if (nextTile === "top") {
-      return {
-        positionX: currentTilePositionX,
-        updateCurrentTilePositionX: currentTilePositionX,
-      };
-    } else {
-      return {
-        positionX: currentTilePositionX,
-        updateCurrentTilePositionX:
-          currentTilePositionX + BASE_TILE_SIZE + BASE_MARGIN_SIZE,
-      };
+    let positionX;
+    let updateCurrentTilePositionX;
+    switch (nextTile) {
+      case "bottom":
+      case "top":
+        positionX = currentTilePositionX;
+        updateCurrentTilePositionX = currentTilePositionX;
+        break;
+      default:
+        positionX = currentTilePositionX;
+        updateCurrentTilePositionX =
+          currentTilePositionX + BASE_TILE_SIZE + BASE_MARGIN_SIZE;
     }
+    return { positionX, updateCurrentTilePositionX };
   };
 
   const mappingPositionForEach = () => {
