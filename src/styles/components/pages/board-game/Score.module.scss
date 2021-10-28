@@ -1,6 +1,7 @@
 .root {
   display: flex;
 }
+
 .childWrapper {
   max-width: 200px;
   min-width: 200px;
@@ -8,6 +9,7 @@
     margin-right: 24px;
   }
 }
+
 .ul {
   list-style: none;
   font-size: 14px;
@@ -17,15 +19,19 @@
     }
   }
 }
+
 .player1 {
   color: var(--c-indigo-primary);
 }
+
 .player2 {
   color: var(--c-orange-primary);
 }
+
 .title {
   font-weight: bold;
 }
+
 .moveLeft {
   .num {
     font-size: 20px;

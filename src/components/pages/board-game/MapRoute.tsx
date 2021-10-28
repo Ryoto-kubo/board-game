@@ -1,3 +1,4 @@
+import { PlayerIcon } from "@/components/ui/PlayerIcon";
 import { Tile } from "@/components/ui/Tile";
 import { userMapRoute } from "@/customHooks/useMapRoute";
 import MapRouteStyle from "@/styles/components/pages/board-game/MapRoute.module.scss";
@@ -9,6 +10,8 @@ export const MapRoute = () => {
 
   return (
     <div className={MapRouteStyle.root}>
+      <PlayerIcon playerClassName="player1" />
+      <PlayerIcon playerClassName="player2" />
       {tileList.map((el) => (
         <div
           key={uuidv4()}
